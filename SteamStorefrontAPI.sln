@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SteamStorefrontAPI", "Steam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamStorefrontConsole", "SteamStorefrontConsole\SteamStorefrontConsole.csproj", "{3D4C08E5-A791-4D5A-B601-7D4D067CA020}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{9BFB8523-05DD-410A-8B6C-B42045864F3B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3D4C08E5-A791-4D5A-B601-7D4D067CA020}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D4C08E5-A791-4D5A-B601-7D4D067CA020}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D4C08E5-A791-4D5A-B601-7D4D067CA020}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BFB8523-05DD-410A-8B6C-B42045864F3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BFB8523-05DD-410A-8B6C-B42045864F3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BFB8523-05DD-410A-8B6C-B42045864F3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BFB8523-05DD-410A-8B6C-B42045864F3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
