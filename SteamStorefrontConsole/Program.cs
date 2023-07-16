@@ -5,9 +5,9 @@ namespace SteamStorefrontConsole
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Task.Run(async () => await Examples()).Wait();
+            await Examples();
         }
 
         static async Task Examples()

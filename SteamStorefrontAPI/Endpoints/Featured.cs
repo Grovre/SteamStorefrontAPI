@@ -37,14 +37,10 @@ namespace SteamStorefrontAPI
         /// <param name="Language">Full name of the language in english used for string localization e.g. name, description.</param>
         public static async Task<FeaturedApps> GetAsync(string CountryCode, string Language)
         {
-            string steamUri = steamBaseUri;
-            steamUri = string.IsNullOrWhiteSpace(CountryCode) ? steamUri : $"{steamUri}?cc={CountryCode}";
-
-            if (!string.IsNullOrWhiteSpace(Language))
-            {
-                steamUri += string.IsNullOrWhiteSpace(CountryCode) ? "?" : "&";
-                steamUri += $"l={Language.ToLower()}";
-            }
+            string steamUri = new SteamUriBuilder(steamBaseUri)
+                .SetCountryCode(CountryCode)
+                .SetLang(Language)
+                .Build();
 
             var response = await client.GetAsync(steamUri);
             if (!response.IsSuccessStatusCode) { return null; }

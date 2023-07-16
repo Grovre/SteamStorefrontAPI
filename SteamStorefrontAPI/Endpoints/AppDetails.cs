@@ -13,7 +13,7 @@ namespace SteamStorefrontAPI
     /// Endpoint returning details for an application in the steam store.</summary>  
     public static class AppDetails
     {
-        private static HttpClient client = new HttpClient();
+        private static HttpClient client = new();
         private const string steamBaseUri = "http://store.steampowered.com/api/appdetails";
 
         /// <summary>
@@ -40,9 +40,11 @@ namespace SteamStorefrontAPI
         /// <param name="Language">Full name of the language in english used for string localization e.g. title, description, release dates.</param>
         public static async Task<SteamApp> GetAsync(int AppId, string CountryCode, string Language)
         {
-            string steamUri = $"{steamBaseUri}?appids={AppId}";
-            steamUri = string.IsNullOrWhiteSpace(CountryCode) ? steamUri : $"{steamUri}&cc={CountryCode}";
-            steamUri = string.IsNullOrWhiteSpace(Language) ? steamUri : $"{steamUri}&l={Language.ToLower()}";
+            string steamUri = new SteamUriBuilder(steamBaseUri)
+                .SetAppId(AppId)
+                .SetCountryCode(CountryCode)
+                .SetLang(Language)
+                .Build();
 
             var response = await client.GetAsync(steamUri);
             if (!response.IsSuccessStatusCode) { return null; }

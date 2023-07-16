@@ -37,20 +37,22 @@ namespace SteamStorefrontAPI.Classes
             this.FeaturedLinux = new List<AppInfo>();
         }
 
+        private static readonly JsonSerializerSettings SerializerSettings = new()
+        { 
+            MetadataPropertyHandling = MetadataPropertyHandling.Ignore, 
+            DateParseHandling = DateParseHandling.None, 
+            Converters = { 
+                new ControllerSupportConverter(), 
+                new IsoDateTimeConverter
+                {
+                    DateTimeStyles = DateTimeStyles.AssumeUniversal
+                } 
+            }
+        };
+        
         public static FeaturedApps FromJson(string json)
         {
-
-            var serializerSettings = new JsonSerializerSettings
-            {
-                MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-                DateParseHandling = DateParseHandling.None,
-                Converters = {
-                new ControllerSupportConverter(),
-                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-                },
-            };
-
-            return JsonConvert.DeserializeObject<FeaturedApps>(json, serializerSettings);
+            return JsonConvert.DeserializeObject<FeaturedApps>(json, SerializerSettings);
         }
     }
 }
